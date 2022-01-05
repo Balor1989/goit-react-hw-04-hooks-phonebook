@@ -1,5 +1,6 @@
 import s from './App.module.css'
-import { useState} from 'react';
+import useLocaleStorage from './hooks/localeStorage';
+import {useState, useEffect} from 'react';
 import Contacts from "./Contacts/Contacts";
 import Phonebook from "./Phonebook/Phonebook";
 import shortid from "shortid";
@@ -10,9 +11,13 @@ import contactEl from './Contacts/contacts.json'
 
 
 const App = () => {
-
-  const [contacts, setContacts] = useState(contactEl);
+  const [contacts, setContacts] = useLocaleStorage('contact', contactEl)
   const [filter, setFilter] = useState('');
+
+
+  useEffect(() => {
+    localStorage.setItem("contact", JSON.stringify(contacts));
+  }, [contacts]);
 
   const filterChange = (e) => {
     setFilter(e.target.value)

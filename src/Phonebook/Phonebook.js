@@ -14,7 +14,6 @@ class Phonebook extends Component {
     formSubmit = e => {
         e.preventDefault()
         this.props.onAddContactCard(this.state)
-        // this.setState({ number: '', name: '' })
         
     };
 
