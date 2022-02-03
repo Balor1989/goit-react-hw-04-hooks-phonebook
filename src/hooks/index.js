@@ -1,1 +1,1 @@
-export {default} from './localeStorage'
+export { default } from './localeStorage';
