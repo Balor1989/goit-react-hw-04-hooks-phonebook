@@ -1,12 +1,12 @@
 import s from './App.module.css';
 import useLocaleStorage from './hooks/localeStorage';
 import { useState, useEffect } from 'react';
-import Contacts from './Contacts/Contacts';
-import Phonebook from './Phonebook/Phonebook';
+import Contacts from './components/Contacts/Contacts';
+import Phonebook from './components/Phonebook/Phonebook';
 import shortid from 'shortid';
-import Filter from './Filter';
+import Filter from './components/Filter';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import contactEl from './Contacts/contacts.json';
+import contactEl from './components/Contacts/contacts.json';
 
 const App = () => {
   const [contacts, setContacts] = useLocaleStorage('contact', contactEl);
