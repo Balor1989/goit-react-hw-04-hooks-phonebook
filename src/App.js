@@ -20,25 +20,24 @@ const App = () => {
     setFilter(e.target.value);
   };
 
-  const addContactCard = values => {
+  const addContactCard = ({ name, number }) => {
     const repeatName = contacts.find(contact => {
-      return contact.name.toLowerCase() === values.name.toLowerCase();
+      return contact.name.toLowerCase() === name.toLowerCase();
     });
     if (repeatName) {
-      Notify.warning(`${values.name} is already in contacts`);
+      Notify.warning(`${name} is already in contacts`);
       return;
     }
     const contact = {
       id: shortid.generate(),
-      name: values.name,
-      number: values.number,
+      name,
+      number,
     };
     setContacts(prev => {
       return [contact, ...prev];
     });
-    values.name = '';
-    values.number = '';
-    Notify.success(`${values.name} is added in contacts`);
+
+    Notify.success(`${name} is added in contacts`);
   };
 
   const deleteContactCard = cardId => {
